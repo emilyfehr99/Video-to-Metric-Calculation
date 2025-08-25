@@ -1,0 +1,24 @@
+# Hockey Metrics Tool Dependencies
+# Standalone tool for hockey analytics
+
+# Core dependencies
+opencv-python>=4.5.0
+numpy>=1.20.0
+pandas>=1.3.0
+Pillow>=8.0.0
+
+# Roboflow integration
+roboflow>=0.2.0
+inference-sdk>=0.9.0
+
+# Data processing
+scipy>=1.7.0
+scikit-learn>=0.24.0
+
+# Utilities
+tqdm>=4.60.0
+pathlib2>=2.3.0
+
+# Optional: for enhanced performance
+# torch>=1.9.0  # Uncomment if you want GPU acceleration
+# torchvision>=0.10.0

@@ -1,0 +1,30 @@
+{
+  "roboflow": {
+    "api_key": "YDZxw1AQEvclkzV0ZLOz",
+    "workspace_name": "hockey-fghn7",
+    "workflow_id": "custom-workflow-3"
+  },
+  "analysis": {
+    "output_dir": "outputs",
+    "rink_dimensions": [1400, 600],
+    "min_confidence": 0.5,
+    "velocity_threshold": 15.0,
+    "entry_zone_threshold": 20.0
+  },
+  "period_detection": {
+    "enabled": true,
+    "period_switch_threshold": 300,
+    "default_home_attacking": "north"
+  },
+  "export": {
+    "formats": ["csv", "json", "txt"],
+    "include_timestamps": true,
+    "include_metadata": true
+  },
+  "processing": {
+    "max_frames": null,
+    "start_time": null,
+    "end_time": null,
+    "fps_override": null
+  }
+}

@@ -5,21 +5,57 @@
     "workflow_id": "custom-workflow-3"
   },
   "analysis": {
-    "output_dir": "outputs",
-    "rink_dimensions": [1400, 600],
-    "min_confidence": 0.5,
-    "velocity_threshold": 15.0,
-    "entry_zone_threshold": 20.0
+    "min_confidence": 0.6,
+    "velocity_threshold": 20.0,
+    "entry_zone_threshold": 25.0,
+    "possession_threshold": 30.0,
+    "pass_distance_threshold": 100.0,
+    "shot_velocity_threshold": 25.0,
+    "rink_dimensions": [1400, 600]
   },
   "period_detection": {
     "enabled": true,
-    "period_switch_threshold": 300,
+    "change_threshold": 50,
     "default_home_attacking": "north"
+  },
+  "stick_blade": {
+    "enabled": true,
+    "min_confidence": 0.7,
+    "detection_range": 50.0
+  },
+  "ai_bot": {
+    "enabled": true,
+    "confidence_boost": 0.15,
+    "pattern_analysis_frames": 5
+  },
+  "jersey_detection": {
+    "enabled": true,
+    "min_confidence": 0.8,
+    "roi_padding": 10,
+    "preprocessing": {
+      "grayscale": true,
+      "clahe": true,
+      "gaussian_blur": true
+    }
+  },
+  "team_colors": {
+    "enabled": true,
+    "similarity_threshold": 0.8,
+    "home_colors": [[255, 0, 0], [200, 0, 0]],
+    "away_colors": [[0, 0, 255], [0, 0, 200]]
+  },
+  "enhanced_accuracy": {
+    "enabled": true,
+    "possession_tracking": true,
+    "shot_validation": true,
+    "pass_validation": true,
+    "team_identification": true
   },
   "export": {
     "formats": ["csv", "json", "txt"],
     "include_timestamps": true,
-    "include_metadata": true
+    "include_metadata": true,
+    "include_detection_method": true
   },
   "processing": {
     "max_frames": null,

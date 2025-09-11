@@ -326,6 +326,7 @@ class HockeyMetricsTracker:
         self.puck_velocity: List[Tuple[float, float]] = []
         self.player_positions: Dict[str, Tuple[float, float]] = {}
         self.player_velocity: Dict[str, Tuple[float, float]] = {}
+        self.player_teams: Dict[str, str] = {}  # NEW: Track player teams from Roboflow
         self.stick_blade_positions: List[Tuple[float, float]] = []
         self.stick_blade_history: List[Dict[str, Any]] = []
         
@@ -694,7 +695,7 @@ class HockeyMetricsTracker:
     # ... [Rest of the methods remain the same as in the original file] ...
     
     def _update_player_positions(self, players: List[Dict]):
-        """Update player position tracking."""
+        """Update player position tracking with team identification from Roboflow."""
         for player in players:
             if player.get('rink_position') and player.get('player_id'):
                 pos = (
@@ -702,6 +703,11 @@ class HockeyMetricsTracker:
                     player['rink_position']['y']
                 )
                 self.player_positions[player['player_id']] = pos
+                
+                # Use Roboflow's home/away class if available
+                if 'class' in player:
+                    team = player['class']  # 'home' or 'away' from Roboflow
+                    self.player_teams[player['player_id']] = team
     
     def _update_puck_tracking(self, puck_detections: List[Dict], frame_id: int, fps: float):
         """Update puck position and velocity tracking with proper physics."""

@@ -5,12 +5,12 @@
     "workflow_id": "custom-workflow-3"
   },
   "analysis": {
-    "min_confidence": 0.6,
-    "velocity_threshold": 20.0,
-    "entry_zone_threshold": 25.0,
-    "possession_threshold": 30.0,
-    "pass_distance_threshold": 100.0,
-    "shot_velocity_threshold": 25.0,
+    "min_confidence": 0.4,
+    "velocity_threshold": 8.0,
+    "entry_zone_threshold": 15.0,
+    "possession_threshold": 20.0,
+    "pass_distance_threshold": 60.0,
+    "shot_velocity_threshold": 12.0,
     "rink_dimensions": [1400, 600]
   },
   "period_detection": {
@@ -20,8 +20,8 @@
   },
   "stick_blade": {
     "enabled": true,
-    "min_confidence": 0.7,
-    "detection_range": 50.0
+    "min_confidence": 0.5,
+    "detection_range": 80.0
   },
   "ai_bot": {
     "enabled": true,
@@ -40,7 +40,7 @@
   },
   "team_colors": {
     "enabled": true,
-    "similarity_threshold": 0.8,
+    "similarity_threshold": 0.6,
     "home_colors": [[255, 0, 0], [200, 0, 0]],
     "away_colors": [[0, 0, 255], [0, 0, 200]]
   },

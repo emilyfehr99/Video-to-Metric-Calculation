@@ -329,6 +329,19 @@ class HockeyMetricsTracker:
         self.stick_blade_positions: List[Tuple[float, float]] = []
         self.stick_blade_history: List[Dict[str, Any]] = []
         
+        # Frame data tracking - CRITICAL FIX
+        self.current_frame_data: Optional[Dict[str, Any]] = None
+        self.previous_frame_data: Optional[Dict[str, Any]] = None
+        
+        # Default team attacking directions
+        self.default_home_attacking = "north"
+        self.default_away_attacking = "south"
+        
+        # Period detection state
+        self.period_start_detected = False
+        self.periods: List[PeriodInfo] = []
+        self.period_switch_threshold = 50  # Default threshold for period detection
+        
         # Hockey-specific tracking
         self.current_period: Optional[PeriodInfo] = None
         self.zone_boundaries: List[ZoneBoundary] = []
@@ -640,9 +653,9 @@ class HockeyMetricsTracker:
         pass_events = self._detect_passes_team_aware(frame_id, timestamp)
         frame_events.extend(pass_events)
         
-        # 4. Enhanced Team Possession Changes (using faceoff circles)
-        possession_events = self._detect_possession_changes(frame_id, timestamp, center_circles, red_circles)
-        frame_events.extend(possession_events)
+        # 4. Enhanced Team Possession Changes (using faceoff circles) - DISABLED for zone exits
+        # possession_events = self._detect_possession_changes(frame_id, timestamp, center_circles, red_circles)
+        # frame_events.extend(possession_events)
         
         # 5. NEW: Advanced Possession Tracking with Team Identification
         possession_event = self._track_possession_with_team_identification(frame_id, timestamp)
